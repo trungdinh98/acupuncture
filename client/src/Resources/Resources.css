@@ -1,0 +1,110 @@
+.top-content {
+  width: -webkit-fill-available;
+  padding: 39px 0px 39px 100px;
+}
+
+.resource-search {
+  width: 413px;
+  height: 37px;
+  line-height: 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(187, 187, 187, 1);
+  color: rgba(138, 138, 138, 1);
+  font-size: 16px;
+  text-align: left;
+  padding: 0px 15px;
+}
+
+.delete-resource {
+  float: right;
+  width: 80px;
+  height: 37px;
+  line-height: 20px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  text-align: center;
+  border: 1px solid #F44336;
+}
+
+.new-resource {
+  float: right;
+  width: 140px;
+  height: 37px;
+  line-height: 20px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  text-align: center;
+  border: 1px solid rgba(26, 115, 232, 1);
+  margin: 0px 100px 0px 10px;
+}
+
+.connect-resource {
+  float: right;
+  width: 80px;
+  height: 37px;
+  line-height: 20px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  text-align: center;
+  border: 1px solid #8BC34A;
+}
+
+.bot-content {
+  padding: 15px 100px;
+  width: -webkit-fill-available;
+}
+
+/*                  TABLE                  */
+.resource-table {
+  width: -webkit-fill-available;
+  border-collapse: collapse;
+}
+
+.resource-table thead {
+  text-align: left;
+}
+
+.resource-table thead:after {
+  content:"@";
+  display:block;
+  line-height:17px;
+  text-indent:-99999px;
+}
+
+.resource-table thead tr th {
+  padding: 0px 0px 0px 13px;
+  border-left: 1px solid rgba(187, 187, 187, 1);
+}
+
+.resource-table tbody {
+  text-align: left;
+  border-top: 2px solid rgba(187, 187, 187, 1);
+}
+
+.resource-table tbody tr {
+  border-bottom: 1px solid rgba(187, 187, 187, 1);
+}
+
+.resource-table tbody tr td {
+  padding: 20px 0px 20px 13px;
+}
+
+.resource-name {
+  width: 18%;
+}
+
+.resource-id {
+  width: 7%;
+}
+
+.project-id {
+  width: 13%;
+}
+
+.key-id {
+  width: 10%;
+}
+
+.dns {
+  width: 9%;
+}

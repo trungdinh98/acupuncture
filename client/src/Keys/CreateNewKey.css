@@ -1,0 +1,20 @@
+.modal-dialog {
+    float: none;
+}
+
+.form-group {
+    display: contents;
+}
+
+.form-label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.modal-content {
+    top: 130px;
+}
+
+.choose-file {
+    margin-top: 10px;
+}

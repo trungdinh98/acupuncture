@@ -19,36 +19,36 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.post('/', (req, res, nex) => {
-    return Models.disease.create({
-        disease_name: req.body.disease_name
-    })
-    .then(function (results) {
-        Models.sequelize.query(
-            `INSERT INTO diseaseUsers (disease_id, user_id, is_admin) \
-            VALUES (${results.dataValues.disease_id}, ${req.body.user_id}, ${1})`
-        )
-        .then(function(err, results){
-            if (err) {
-                res.send(err);
-            } else {
-                res.send(results);
-            }
-        })
+// router.post('/', (req, res, nex) => {
+//     return Models.disease.create({
+//         disease_name: req.body.disease_name
+//     })
+//     .then(function (results) {
+//         Models.sequelize.query(
+//             `INSERT INTO diseaseUsers (disease_id, user_id, is_admin) \
+//             VALUES (${results.dataValues.disease_id}, ${req.body.user_id}, ${1})`
+//         )
+//         .then(function(err, results){
+//             if (err) {
+//                 res.send(err);
+//             } else {
+//                 res.send(results);
+//             }
+//         })
 
-        // "diseaseUser".create({
-        //     disease_id: results.dataValues.disease_id,
-        //     user_id: req.body.user_id,
-        // })
-    })
-    // .then(function (disease) {
-    //     if (disease) {
-    //         res.send(disease);
-    //     } else {
-    //         res.status(400).send('Error in insert new record');
-    //     }
-    // });
-});
+//         // "diseaseUser".create({
+//         //     disease_id: results.dataValues.disease_id,
+//         //     user_id: req.body.user_id,
+//         // })
+//     })
+//     // .then(function (disease) {
+//     //     if (disease) {
+//     //         res.send(disease);
+//     //     } else {
+//     //         res.status(400).send('Error in insert new record');
+//     //     }
+//     // });
+// });
 
 router.post('/', (req, res, nex) => {
     const today = new Date()

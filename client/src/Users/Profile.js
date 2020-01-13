@@ -34,7 +34,7 @@ class Profile extends React.Component {
              <h1 style={{padding: '100px 0 30px'}} className="text-center"> PROFILE</h1>
                 <div style={{width: 'inherit'}} className="jumbotron mt-5">
                     <div>
-                        <img src="/image/avatar.jpeg"/>
+                        <img alt="avatar" src="/image/avatar.jpeg"/>
                     </div>
                     <table className="table col-md-6 mx-auto">
                         <tbody>

@@ -75,7 +75,7 @@ class Diseases extends React.Component{
         })
     }
 
-    redirectToUser = (disease_id) => {
+    redirectToDisease = (disease_id) => {
         console.log(disease_id);
         this.setState({redirect : true, disease_id: disease_id})
     }
@@ -100,7 +100,7 @@ class Diseases extends React.Component{
                     <td>{disease.disease_name}</td>
                     <td>{new Date(disease.disease_created_at).toLocaleString()}</td>
                     <td><button className="delete-disease" onClick={() => {this.removeDisease(disease.disease_id)}}>Delete</button></td>
-                    <td><button className="show-disease" onClick={() => this.redirectToUser(disease.disease_id)}>Show</button></td>
+                    <td><button className="show-disease" onClick={() => this.redirectToDisease(disease.disease_id)}>Show</button></td>
                 </tr>
             )
         })
@@ -130,7 +130,7 @@ class Diseases extends React.Component{
                     </table>
                 </div>
                 <NewDisease userid={this.state.user_id} show={modalShow} onHide={this.close}/>
-                    {redirect && (<Redirect to={{ pathname: '/diseaseusers/', state: {disease_id}}}/>)}
+                {redirect && (<Redirect to={{ pathname: '/disease/' + disease_id, state: {disease_id}}}/>)}
             </div>
         )
     }

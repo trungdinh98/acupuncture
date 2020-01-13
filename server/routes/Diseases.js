@@ -3,81 +3,54 @@ const router = express.Router();
 const Models = require('../models');
 
 router.get('/', (req, res, next) => {
-    Models.disease.findAll({
-        // include: [{
-        //     model: Models.user,
-        //     where: {
-        //         user_id: req.param('user_id')
-        //     },
-        // }],
-    })
+    Models.disease.findAll({})
     .then(diseases => {
         res.json(diseases)
     })
     .catch(err => {
         res.send('Error: ' + err)
     })
+});
+
+router.get('/:id', (req, res, next) => {
+    var id = req.params['id']; 
+    Models.disease.findOne ({
+        where: {
+            disease_id: id,
+        }
+    })
+    .then(disease => {
+        res.json(disease)
+    })
+    .catch(err => {
+        res.send('Error: ' + err)
+    })
 })
-
-// router.post('/', (req, res, nex) => {
-//     return Models.disease.create({
-//         disease_name: req.body.disease_name
-//     })
-//     .then(function (results) {
-//         Models.sequelize.query(
-//             `INSERT INTO diseaseUsers (disease_id, user_id, is_admin) \
-//             VALUES (${results.dataValues.disease_id}, ${req.body.user_id}, ${1})`
-//         )
-//         .then(function(err, results){
-//             if (err) {
-//                 res.send(err);
-//             } else {
-//                 res.send(results);
-//             }
-//         })
-
-//         // "diseaseUser".create({
-//         //     disease_id: results.dataValues.disease_id,
-//         //     user_id: req.body.user_id,
-//         // })
-//     })
-//     // .then(function (disease) {
-//     //     if (disease) {
-//     //         res.send(disease);
-//     //     } else {
-//     //         res.status(400).send('Error in insert new record');
-//     //     }
-//     // });
-// });
 
 router.post('/', (req, res, nex) => {
     const today = new Date()
-    const keyData = {
-        key_name: req.body.key_name,
-        project_id: req.body.project_id,
-        key_created_at: today,
-        key_value: req.body.key_value
+    const diseaseData = {
+        disease_name: req.body.disease_name,
+        disease_created_at: today
     }
-    Models.key.findOne ({
+    Models.disease.findOne ({
         where: {
-            key_name: req.body.key_name,
-            project_id: req.body.project_id
+            disease_name: req.body.disease_name,
         }
     })
-    .then (key => {
-        if (!key) {
-            Models.key.create(keyData)
-            .then(function (key) {
-                
-                if (key) {
-                    putItem(key.dataValues.key_id.toString(), keyData.key_value);
-                    res.send(key);
+    .then (disease => {
+        if (!disease) {
+            Models.disease.create(diseaseData)
+            .then(function (disease) {
+                if (disease) {
+                    putItem(disease.dataValues.disease_id.toString(), diseaseData.disease_value);
+                    res.send(disease);
                 } else {
                     res.status(400).send('Error in insert new record');
                 }
             });
         } else {
-            res.json({ error: 'Key already exists' })
+            res.json({ error: 'This disease already exists' })
         }
     })
     .catch(err => {

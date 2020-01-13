@@ -48,26 +48,13 @@ class Diseases extends React.Component{
 
     async getDiseases(user_id){
         await api.get('/diseases', {
-            params: {
-                user_id: user_id
-            }
+            // params: {
+            //     user_id: user_id
+            // }
         })
         .then((response) => {
             this.setState({diseases:response.data});
             console.log(this.state.diseases);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
-
-    addDisease(disease_name, user_id){
-        api.post('/diseases', {
-            disease_name: disease_name,
-            user_id: user_id
-        })
-        .then((response) => {
-            this.getDiseases(this.state.user_id);
         })
         .catch((err) => {
             console.log(err);

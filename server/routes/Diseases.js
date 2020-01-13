@@ -4,12 +4,12 @@ const Models = require('../models');
 
 router.get('/', (req, res, next) => {
     Models.disease.findAll({
-        include: [{
-            model: Models.user,
-            where: { 
-                user_id: req.param('user_id')
-            },
-        }],
+        // include: [{
+        //     model: Models.user,
+        //     where: {
+        //         user_id: req.param('user_id')
+        //     },
+        // }],
     })
     .then(diseases => {
         res.json(diseases)

@@ -12,6 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var Users = require('./routes/Users');
 app.use('/users', Users);
 
+var Diseases = require('./routes/Diseases');
+app.use('/diseases', Diseases);
+
 app.get('/', (req, res) => {
     res.send('Hello server!')
 });

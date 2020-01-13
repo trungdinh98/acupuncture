@@ -89,3 +89,7 @@
 .disease-table tbody tr td {
   padding: 20px 0px 20px 13px;
 }
+
+.modal.show .modal-dialog {
+    float: none;
+}

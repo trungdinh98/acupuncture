@@ -69,7 +69,7 @@ class Login extends React.Component {
                             Sign in
                         </button>
                         <div className="login_box text-center">
-                           <Link className="link-primary" to="/register">Register if you do not have account</Link>
+                           <Link className="link-primary" to="/register">Register if you do not have account !</Link>
                         </div>
                     </div>
                 </form>

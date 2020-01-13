@@ -3,7 +3,7 @@
   padding: 39px 0px 39px 100px;
 }
 
-.project-search {
+.disease-search {
   width: 413px;
   height: 37px;
   line-height: 20px;
@@ -15,7 +15,7 @@
   padding: 0px 15px;
 }
 
-.delete-project {
+.delete-disease {
   float: right;
   width: 130px;
   height: 37px;
@@ -26,7 +26,7 @@
   border: 1px solid #F44336;
 }
 
-.show-project {
+.show-disease {
   float: right;
   width: 110px;
   height: 37px;
@@ -37,7 +37,7 @@
   border: 1px solid rgba(26, 115, 232, 1);
 }
 
-.new-project {
+.new-disease {
   float: right;
   width: 110px;
   height: 37px;
@@ -55,37 +55,37 @@
 }
 
 /*                  TABLE                  */
-.project-table {
+.disease-table {
   width: -webkit-fill-available;
   border-collapse: collapse;
 }
 
-.project-table thead {
+.disease-table thead {
   text-align: left;
 }
 
-.project-table thead:after {
+.disease-table thead:after {
   content:"@";
   display:block;
   line-height:17px;
   text-indent:-99999px;
 }
 
-.project-table thead tr th {
+.disease-table thead tr th {
   width: 24%;
   padding: 0px 0px 0px 13px;
   border-left: 1px solid rgba(187, 187, 187, 1);
 }
 
-.project-table tbody {
+.disease-table tbody {
   text-align: left;
   border-top: 2px solid rgba(187, 187, 187, 1);
 }
 
-.project-table tbody tr {
+.disease-table tbody tr {
   border-bottom: 1px solid rgba(187, 187, 187, 1);
 }
 
-.project-table tbody tr td {
+.disease-table tbody tr td {
   padding: 20px 0px 20px 13px;
 }

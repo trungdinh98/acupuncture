@@ -55,11 +55,10 @@ class Header extends React.Component {
             <div style={{float:'none'}}>
                 <div id="mySidenav" className="sidenav">
                     <div className="closebtn" onClick={closeNav}>&times;</div>
-                    {/*<Link to="/users">Users</Link>*/}
-                    <Link to="/resources">Resources</Link>
-                    <Link to="/projects">Projects</Link>
+                    <Link to="/diseases">Diseases</Link>
+                    {/*<Link to="/resources">Resources</Link>
                     <Link to="/keys">Keys</Link>
-                    <Link to="/Logging">Logging</Link>
+                    <Link to="/Logging">Logging</Link>*/}
                 </div>
 
                 <div id="main" className="navBar">
@@ -69,7 +68,7 @@ class Header extends React.Component {
 
                     <div className="leftNavBar">
                         <div className="homeButton">
-                            <Link to="/">SSH Manager</Link>
+                            <Link to="/">Acupuncture</Link>
                         </div>
                     </div>
 

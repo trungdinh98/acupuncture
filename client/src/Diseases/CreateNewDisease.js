@@ -3,13 +3,13 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
-import { createProject } from './Projects'
+import { createDisease } from './Diseases'
 
-class CreateNewProject extends React.Component{
+class CreateNewDisease extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            project_name: ""
+            disease_name: ""
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -22,12 +22,12 @@ class CreateNewProject extends React.Component{
     onSubmit(e) {
         e.preventDefault()
 
-        const project = {
-            project_name: this.state.project_name,
+        const disease = {
+            disease_name: this.state.disease_name,
             user_id: this.props.userid
         }
 
-        createProject(project).then(response => {
+        createDisease(disease).then(response => {
             return this.props.onHide;
         })
     }
@@ -40,19 +40,19 @@ class CreateNewProject extends React.Component{
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Form.Label>Project Name</Form.Label>
+                        <Form.Label>Disease Name</Form.Label>
                         <InputGroup>
                           <Form.Control
-                            name="project_name"
+                            name="disease_name"
                             placeholder="Name"
                             aria-label="Recipient's username"
                             aria-describedby="basic-addon2"
-                            value={this.state.project_name}
+                            value={this.state.disease_name}
                             onChange={this.onChange}
                           />
                         </InputGroup>
                         <Form.Text className="text-muted mb-3">
-                            Name of your new project can edit late
+                            Name of your new disease can edit late !
                         </Form.Text>
                     </Form>
                 </Modal.Body>
@@ -65,4 +65,4 @@ class CreateNewProject extends React.Component{
     }
 }
 
-export default CreateNewProject
+export default CreateNewDisease

@@ -1,5 +1,6 @@
 import React from 'react';
 import api from "../api";
+// import { Link } from 'react-router-dom';
 
 class Acupuncture extends React.Component {
     constructor(props) {
@@ -49,7 +50,12 @@ class Acupuncture extends React.Component {
         return this.state.images.map((image, index) => {
             return (
                 <div className="text-center mt-5" style={{width: '100%'}} key={image.image_id}>
-                    <img alt="Acupuncture" src={image.image_path}/>
+                    <img alt="Acupuncture" src={image.image_path} useMap="#acupuncturemap"/>
+                    <map name="acupuncturemap">
+                      <area shape="circle" coords="302,90,60" alt="Head" href="/head"/>
+                      <area shape="rect" coords="0,150,604,450" alt="Back" href="/back"/>
+                      <area shape="rect" coords="0,460,604,820" alt="Leg" href="/leg"/>
+                    </map>
                 </div>
             )
         })

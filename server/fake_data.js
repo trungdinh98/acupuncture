@@ -25,7 +25,7 @@ connection.connect(err => {
 diseases = [
     {
         disease_id: 1001,
-        disease_name: "Cao huyết áp",
+        disease_name: "Cao huyết áp thuần túy",
     },
     {
         disease_id: 1002,

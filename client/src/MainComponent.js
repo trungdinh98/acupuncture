@@ -7,6 +7,9 @@ import Login from './LoginRegister/Login.js';
 import Register from './LoginRegister/Register.js';
 import Profile from './Users/Profile.js';
 import Acupuncture from './Acupuncture/Acupuncture.js';
+import Head from './Acupuncture/Head.js';
+import Back from './Acupuncture/Back.js';
+import Leg from './Acupuncture/Leg.js';
 
 class MainComponent extends React.Component {
     render () {
@@ -17,6 +20,9 @@ class MainComponent extends React.Component {
                 <Route path='/register' component={Register}/>
                 <Route path='/diseases' component={Diseases}/>
                 <Route path='/disease/:id' component={Acupuncture}/>
+                <Route path='/head' component={Head}/>
+                <Route path='/back' component={Back}/>
+                <Route path='/leg' component={Leg}/>
                 <Route path='/profile' component={Profile}/>
             </Switch>
         )

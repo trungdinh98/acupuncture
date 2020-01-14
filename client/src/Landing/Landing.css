@@ -8,21 +8,21 @@
 }
 .presentation {
   float: none;
-  color: #fff;
+  color: #000;
   text-align: center;
 }
 
 .presentation1 {
   font-size: 25px;
   float: none;
-  color: #fff;
+  color: #000;
   text-align: center;
 }
 
 .heading-title {
   float: none;
   text-align: center;
-  color: #fff;
+  color: #000;
   text-transform: uppercase;
 }
 
@@ -30,7 +30,7 @@
   font-weight: bold;
   letter-spacing: 7px;
   text-align: center;
-  color: #fff;
+  color: #000;
 }
 
 #page-footer {
@@ -48,5 +48,5 @@
     font-weight: bold;
     line-height: 1.29;
     letter-spacing: 0.5px;
-    color: #1b73e8;
+    color: #000;
 }

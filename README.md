@@ -59,6 +59,7 @@ cd client
 npm start
 ```
 ## Bước 5: Sinh data
+User được sinh ra có password mặc định là 123456
 ```
 cd server
 node fake_data.js

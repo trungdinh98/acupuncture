@@ -10,6 +10,10 @@ module.exports = function(sequelize, Sequelize){
         image_path: {
             type     : Sequelize.STRING,
         },
+        disease_id: {
+            type      : Sequelize.INTEGER, 
+            allowNull : false,
+        },
         image_created_at: {
             type        : Sequelize.DATE,
             allowNull   : false,

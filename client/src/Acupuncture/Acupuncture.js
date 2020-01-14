@@ -5,16 +5,18 @@ class Acupuncture extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            images: [],
             disease: {
                 disease_id: "",
                 disease_name: "",
-                disease_created_at: ""
+                disease_created_at: "",
             },
         }
     }
 
     componentDidMount () {
         this.getDisease(this.props.location.state.disease_id);
+        this.getImages(this.props.location.state.disease_id);
     }
 
     async getDisease(id){
@@ -28,14 +30,36 @@ class Acupuncture extends React.Component {
         })
     }
 
+    getImages(disease_id) {
+        api.get('/images', {
+            params: {
+                disease_id: disease_id
+            }
+        })
+        .then((response) => {
+            this.setState({images:response.data});
+            console.log(this.state.images);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
+    renderTableData(){
+        return this.state.images.map((image, index) => {
+            return (
+                <div className="text-center mt-5" style={{width: '100%'}} key={image.image_id}>
+                    <img alt="Acupuncture" src={image.image_path}/>
+                </div>
+            )
+        })
+    }
+
     render () {
         return (
             <div style={{float:'none'}} className="container">
              <h1 style={{padding: '100px 0 30px'}} className="text-center">{this.state.disease.disease_name}</h1>
                 <div style={{width: 'inherit'}} className="jumbotron mt-5">
-                    <div>
-                        <img alt="avatar" src="/image/avatar.jpeg"/>
-                    </div>
                     <table className="table col-md-6 mx-auto">
                         <tbody>
                             <tr>
@@ -53,6 +77,7 @@ class Acupuncture extends React.Component {
                         </tbody>
                     </table>
                 </div>
+                {this.renderTableData()}
             </div>
         )
     }

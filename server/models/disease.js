@@ -10,10 +10,6 @@ module.exports = function(sequelize, Sequelize){
             unique    : true,
             autoIncrement: true
         },
-        acupuncture_id: {
-            type      : Sequelize.INTEGER,
-            allowNull : false,
-        },
         disease_created_at: {
             type        : Sequelize.DATE,
             allowNull   : false,

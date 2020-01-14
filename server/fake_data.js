@@ -22,103 +22,53 @@ connection.connect(err => {
     }
 });
 
-// projects = [
-//     {
-//         project_id: 1001,
-//         project_name: "project1",
-//         owner_id: 1001
-//     },
-//     {
-//         project_id: 1002,
-//         project_name: "project2",
-//         owner_id: 1002
-//     },
-//     {
-//         project_id: 1003,
-//         project_name: "project3",
-//         owner_id: 1003
-//     },
-// ]
+diseases = [
+    {
+        disease_id: 1001,
+        disease_name: "Cao huyết áp",
+    },
+    {
+        disease_id: 1002,
+        disease_name: "Tim mạch",
+    },
+    {
+        disease_id: 1003,
+        disease_name: "Máu nhiễm mỡ",
+    },
+]
 
-// keys = [
-//     {
-//         project_id: 1001,
-//         key_id: 1001,
-//         key_name: "key1"
-//     },
-//     {
-//         project_id: 1002,
-//         key_id: 1002,
-//         key_name: "key2"
-//     },
-//     {
-//         project_id: 1002,
-//         key_id: 1003,
-//         key_name: "key3"
-//     },
-//     {
-//         project_id: 1003,
-//         key_id: 1004,
-//         key_name: "key4"
-//     },
-//     {
-//         project_id: 1003,
-//         key_id: 1005,
-//         key_name: "key5"
-//     }
-// ]
-
-// resources = [
-//     {
-//         project_id: 1001,
-//         resource_name: "resource1",
-//         resource_dns: "1.1.1.1",
-//         resource_user: "ubuntu",
-//         key_id: 1001
-//     },
-//     {
-//         project_id: 1001,
-//         resource_name: "resource2",
-//         resource_dns: "2.2.2.2",
-//         resource_user: "ubuntu",
-//         key_id: 1001
-//     },
-//     {
-//         project_id: 1002,
-//         resource_name: "resource3",
-//         resource_dns: "3.3.3.3",
-//         resource_user: "ubuntu",
-//         key_id: 1002
-//     },
-//     {
-//         project_id: 1002,
-//         resource_name: "resource4",
-//         resource_dns: "4.4.4.4",
-//         resource_user: "ubuntu",
-//         key_id: 1003
-//     },
-//     {
-//         project_id: 1003,
-//         resource_name: "resource5",
-//         resource_dns: "5.5.5.5",
-//         resource_user: "ubuntu",
-//         key_id: 1004
-//     },
-//     {
-//         project_id: 1003,
-//         resource_name: "resource6",
-//         resource_dns: "6.6.6.6",
-//         resource_user: "ubuntu",
-//         key_id: 1004
-//     },
-//     {
-//         project_id: 1001,
-//         resource_name: "resource1",
-//         resource_dns: "7.7.7.7",
-//         resource_user: "ubuntu",
-//         key_id: 1005
-//     },
-// ]
+images = [
+    {
+        disease_id: 1001,
+        image_id: 1001,
+        image_path: "/image/acupuncture/HuyetApCaoThuanTuy.png"
+    },
+    {
+        disease_id: 1001,
+        image_id: 1002,
+        image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Body.png"
+    },
+    {
+        disease_id: 1001,
+        image_id: 1003,
+        image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Back.png"
+    },
+    {
+        disease_id: 1001,
+        image_id: 1004,
+        image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Hand.png"
+    },
+    {
+        disease_id: 1001,
+        image_id: 1005,
+        image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Head.png"
+    },
+    {
+        disease_id: 1001,
+        image_id: 1006,
+        image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Leg.png"
+    }
+]
 
 users = [
     {
@@ -151,83 +101,35 @@ users = [
     }
 ]
 
-// project_users = [
-//     {
-//         project_id: 1001,
-//         user_id: 1001,
-//         is_admin: 1
-//     },
-//     {
-//         project_id: 1001,
-//         user_id: 1003,
-//         is_admin: 0
-//     },
-//     {
-//         project_id: 1002,
-//         user_id: 1001,
-//         is_admin: 0
-//     },
-//     {
-//         project_id: 1002,
-//         user_id: 1002,
-//         is_admin: 1
-//     },
-//     {
-//         project_id: 1003,
-//         user_id: 1003,
-//         is_admin: 1
-//     },
-//     {
-//         project_id: 1003,
-//         user_id: 1004,
-//         is_admin: 0
-//     }
-// ]
+createDiseases = function() {
+    diseases.forEach(element => {
+        let sql_command = "INSERT INTO `diseases` (`disease_name`, `disease_id`) VALUES (?, ?)"
+        connection.query(sql_command, [element.disease_name, element.disease_id],
+            (err, results) => {
+                if(err){
+                    console.log(err);
+                }
+                else{
+                    console.log(results);
+                }
+            })
+    });
+}
 
-// createProject = function() {
-//     projects.forEach(element => {
-//         let sql_command = "INSERT INTO `projects` (`project_name`, `project_id`) VALUES (?, ?)"
-//         connection.query(sql_command, [element.project_name, element.project_id, element.owner_id],
-//             (err, results) => {
-//                 if(err){
-//                     console.log(err);
-//                 }
-//                 else{
-//                     console.log(results);
-//                 }
-//             })
-//     });
-// }
-
-// createKeys = function() {
-//     keys.forEach(element => {
-//         let sql_command = "INSERT INTO `keys` (`key_id`, `project_id`, `key_name`) VALUES (?, ?, ?)"
-//         connection.query(sql_command, [element.key_id, element.project_id, element.key_name],
-//             (err, results) => {
-//                 if(err){
-//                     console.log(err);
-//                 }
-//                 else{
-//                     console.log(results);
-//                 }
-//             })
-//     })
-// }
-
-// createResources = function() {
-//     resources.forEach(element => {
-//         let sql_command = "INSERT INTO `resources` (`project_id`, `resource_name`, `resource_dns`, `resource_user`, `key_id`) VALUES (?, ?, ?, ?, ?)"
-//         connection.query(sql_command, [element.project_id, element.resource_name, element.resource_dns, element.resource_user, element.key_id],
-//             (err, results) => {
-//                 if(err){
-//                     console.log(err);
-//                 }
-//                 else{
-//                     console.log(results);
-//                 }
-//             }) 
-//     })
-// }
+createImages = function() {
+    images.forEach(element => {
+        let sql_command = "INSERT INTO `images` (`image_id`, `disease_id`, `image_path`) VALUES (?, ?, ?)"
+        connection.query(sql_command, [element.image_id, element.disease_id, element.image_path],
+            (err, results) => {
+                if(err){
+                    console.log(err);
+                }
+                else{
+                    console.log(results);
+                }
+            })
+    })
+}
 
 createUsers = function(){
     users.forEach(element => {
@@ -244,25 +146,8 @@ createUsers = function(){
     })
 }
 
-// createProjectUser = function(){
-//     project_users.forEach(element => {
-//         let sql_command = "INSERT INTO `projectUsers` (`user_id`, `project_id`, `is_admin`) VALUES (?, ?, ?)"
-//         connection.query(sql_command, [element.user_id, element.project_id, element.is_admin],
-//             (err, results) => {
-//                 if(err){
-//                     console.log(err);
-//                 }
-//                 else{
-//                     console.log(results);
-//                 }
-//             }) 
-//     })
-// }
-
 createUsers()
-// createProject()
-// createKeys()
-// createResources()
-// createProjectUser()
+createDiseases()
+createImages()
 
 connection.end()

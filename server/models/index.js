@@ -20,6 +20,7 @@ sequelize.sync()
 let models = [
   'user',
   'disease',
+  'image'
 ]
 
 models.forEach(function(model){
@@ -27,18 +28,8 @@ models.forEach(function(model){
 });
 
 (function(m){
-  // m.user.hasMany(m.project, {foreignKey: {name: 'owner_id', allowNull: false}, onDelete: 'CASCADE'})
-  
-  // m.user.belongsToMany(m.project, {through: "projectUser", foreignKey: 'user_id'});
-  // m.project.belongsToMany(m.user, {through: "projectUser", foreignKey: 'project_id'});
-
-  // m.project.hasMany(m.resource, {foreignKey: {name: 'project_id', allowNull: false}, onDelete: 'CASCADE'});
-  // m.project.hasMany(m.key, {foreignKey: {name: 'project_id', allowNull: false}, onDelete: 'CASCADE'});
-  // m.key.belongsTo(m.project, {foreignKey: {name: 'project_id', allowNull: false}, onDelete: 'CASCADE'});
-  // m.resource.belongsTo(m.project, {foreignKey: {name: 'project_id', allowNull: false}, onDelete: 'CASCADE'});
-  
-  // m.project.hasMany(m.sshLog, {foreignKey: {name: 'project_id', allowNull: false}, onDelete: 'CASCADE'})
-  // m.sshLog.belongsTo(m.project, {foreignKey: {name: 'project_id', allowNull: false}, onDelete: 'CASCADE'})
+  m.disease.hasMany(m.image, {foreignKey: {name: 'disease_id', allowNull: false}, onDelete: 'CASCADE'});
+  m.image.belongsTo(m.disease, {foreignKey: {name: 'disease_id', allowNull: false}, onDelete: 'CASCADE'});
 
 })(module.exports);
 module.exports.sequelize = sequelize;

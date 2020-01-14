@@ -15,6 +15,9 @@ app.use('/users', Users);
 var Diseases = require('./routes/Diseases');
 app.use('/diseases', Diseases);
 
+var Images = require('./routes/Images');
+app.use('/images', Images);
+
 app.get('/', (req, res) => {
     res.send('Hello server!')
 });

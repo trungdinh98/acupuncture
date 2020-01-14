@@ -99,7 +99,7 @@ class Diseases extends React.Component{
                     <td>{disease.disease_id}</td>
                     <td>{disease.disease_name}</td>
                     <td>{new Date(disease.disease_created_at).toLocaleString()}</td>
-                    <td><button className="delete-disease" onClick={() => {this.removeDisease(disease.disease_id)}}>Delete</button></td>
+                    {/*<td><button className="delete-disease" onClick={() => {this.removeDisease(disease.disease_id)}}>Delete</button></td>*/}
                     <td><button className="show-disease" onClick={() => this.redirectToDisease(disease.disease_id)}>Show</button></td>
                 </tr>
             )

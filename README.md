@@ -58,7 +58,11 @@ node index.js
 cd client
 npm start
 ```
-
+## Bước 5: Sinh data
+```
+cd server
+node fake_data.js
+```
 ## Lưu ý khác:
 1. Các file hoặc folder quan trọng chạy trong docker đã được mount với file/folder quan trọng trên local. Vì vậy, không cần lo lắng việc sau dữ liệu bị mất sau khi tắt container <br/>
 2. địa chỉ IP của container đã được cài đặt cố định, vì vậy không cần thay đổi cài đặt trong file .env khi khởi động lại container <br/>

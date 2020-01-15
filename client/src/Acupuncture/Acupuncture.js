@@ -71,6 +71,9 @@ class Acupuncture extends React.Component {
             <div style={{float:'none'}} className="container">
              <h1 style={{padding: '100px 0 30px'}} className="text-center">{this.state.subdisease.disease.disease_name}: {this.state.subdisease.subdisease_name}</h1>
                 <div style={{width: 'inherit'}} className="jumbotron mt-5">
+                    <div className="text-center float-none">
+                        Đợt {this.props.location.state.time}, Ngày châm thứ {this.props.location.state.date}
+                    </div>
                     <table className="table col-md-6 mx-auto">
                         <tbody>
                             <tr>

@@ -4,8 +4,8 @@ services:
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
-    # ports: 
-    #   - "3306:3306"
+    ports:
+      - "3306:3306"
     mem_limit: 1000000000
     environment:
       MYSQL_DATABASE: acupuncture

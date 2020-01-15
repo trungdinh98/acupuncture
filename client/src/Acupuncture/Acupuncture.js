@@ -1,40 +1,45 @@
 import React from 'react';
 import api from "../api";
-// import { Link } from 'react-router-dom';
 
 class Acupuncture extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             images: [],
-            disease: {
-                disease_id: "",
-                disease_name: "",
-                disease_created_at: "",
+            subdisease: {
+                subdisease_id: "",
+                subdisease_name: "",
+                subdisease_created_at: "",
+                disease: {
+                    disease_name: ""
+                }
             },
         }
     }
 
     componentDidMount () {
-        this.getDisease(this.props.location.state.disease_id);
-        this.getImages(this.props.location.state.disease_id);
+        console.log(this.props);
+        this.getSubDisease(this.props.location.state.subdisease_id);
+        this.getImages(this.props.location.state.time, this.props.location.state.date, this.props.location.state.subdisease_id);
     }
 
-    async getDisease(id){
-        await api.get('/diseases/' + id, {})
+    async getSubDisease(id){
+        await api.get('/subdiseases/' + id, {})
         .then((response) => {
-            this.setState({disease:response.data});
-            console.log(this.state.disease);
+            this.setState({subdisease:response.data});
+            console.log(this.state.subdisease);
         })
         .catch((err) => {
             console.log(err);
         })
     }
 
-    getImages(disease_id) {
+    getImages(time, date, subdisease_id) {
         api.get('/images', {
             params: {
-                disease_id: disease_id
+                time: time,
+                date: date,
+                subdisease_id: subdisease_id
             }
         })
         .then((response) => {
@@ -64,21 +69,21 @@ class Acupuncture extends React.Component {
     render () {
         return (
             <div style={{float:'none'}} className="container">
-             <h1 style={{padding: '100px 0 30px'}} className="text-center">{this.state.disease.disease_name}</h1>
+             <h1 style={{padding: '100px 0 30px'}} className="text-center">{this.state.subdisease.disease.disease_name}: {this.state.subdisease.subdisease_name}</h1>
                 <div style={{width: 'inherit'}} className="jumbotron mt-5">
                     <table className="table col-md-6 mx-auto">
                         <tbody>
                             <tr>
                                 <td>ID:</td>
-                                <td>{this.state.disease.disease_id}</td>
+                                <td>{this.state.subdisease.subdisease_id}</td>
                             </tr>
                             <tr>
                                 <td>Name:</td>
-                                <td>{this.state.disease.disease_name}</td>
+                                <td>{this.state.subdisease.subdisease_name}</td>
                             </tr>
                             <tr>
                                 <td>Created At:</td>
-                                <td>{new Date(this.state.disease.disease_created_at).toLocaleString()}</td>
+                                <td>{new Date(this.state.subdisease.subdisease_created_at).toLocaleString()}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -174,33 +174,45 @@ subdiseases = [
 
 images = [
     {
-        disease_id: 1001,
+        subdisease_id: 1001,
         image_id: 1001,
+        time: "1",
+        date: "1",
         image_path: "/image/acupuncture/HuyetApCaoThuanTuy.png"
     },
     {
-        disease_id: 1001,
+        subdisease_id: 1001,
         image_id: 1002,
+        time: "1",
+        date: "1",
         image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Body.png"
     },
     {
-        disease_id: 1001,
+        subdisease_id: 1001,
         image_id: 1003,
+        time: "1",
+        date: "1",
         image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Back.png"
     },
     {
-        disease_id: 1001,
+        subdisease_id: 1001,
         image_id: 1004,
+        time: "1",
+        date: "1",
         image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Hand.png"
     },
     {
-        disease_id: 1001,
+        subdisease_id: 1001,
         image_id: 1005,
+        time: "1",
+        date: "1",
         image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Head.png"
     },
     {
-        disease_id: 1001,
+        subdisease_id: 1001,
         image_id: 1006,
+        time: "1",
+        date: "1",
         image_path: "/image/acupuncture/HuyetApCaoThuanTuy-Leg.png"
     }
 ]
@@ -268,8 +280,8 @@ createSubDiseases = function() {
 
 createImages = function() {
     images.forEach(element => {
-        let sql_command = "INSERT INTO `images` (`image_id`, `disease_id`, `image_path`) VALUES (?, ?, ?)"
-        connection.query(sql_command, [element.image_id, element.disease_id, element.image_path],
+        let sql_command = "INSERT INTO `images` (`image_id`, `subdisease_id`, `date`, `time`, `image_path`) VALUES (?, ?, ?, ?, ?)"
+        connection.query(sql_command, [element.image_id, element.subdisease_id, element.date, element.time, element.image_path],
             (err, results) => {
                 if(err){
                     console.log(err);

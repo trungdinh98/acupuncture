@@ -15,6 +15,9 @@ app.use('/users', Users);
 var Diseases = require('./routes/Diseases');
 app.use('/diseases', Diseases);
 
+var Subdiseases = require('./routes/Subdiseases');
+app.use('/subdiseases', Subdiseases);
+
 var Images = require('./routes/Images');
 app.use('/images', Images);
 

@@ -19,7 +19,7 @@ class MainComponent extends React.Component {
                 <Route path='/login' component={Login}/>
                 <Route path='/register' component={Register}/>
                 <Route path='/diseases' component={Diseases}/>
-                <Route path='/disease/:id' component={Acupuncture}/>
+                <Route path='/subdiseases/:id' component={Acupuncture}/>
                 <Route path='/head' component={Head}/>
                 <Route path='/back' component={Back}/>
                 <Route path='/leg' component={Leg}/>

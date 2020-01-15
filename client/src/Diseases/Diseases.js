@@ -3,6 +3,7 @@ import api from "../api";
 import { Redirect } from "react-router";
 import jwt_decode from 'jwt-decode';
 import './Diseases.css';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import NewDisease from './CreateNewDisease';
 
 export const createDisease = disease => {
@@ -24,10 +25,17 @@ class Diseases extends React.Component{
     constructor() {
         super();
         this.state = {
+            time: "",
+            date: "",
             diseases: [],
+            subdiseases: [],
             user_id: '',
-            modalShow: false
+            modalShow: false,
+            dropDownValue: "Chọn tên bệnh",
+            renderDiseases: ({disease_id, disease_name}) =>
+                <Dropdown.Item key={disease_id} as="button"><div onClick={(e) => this.changeValue(e.target.textContent)}>{disease_name}</div></Dropdown.Item>
         }
+        this.onChange = this.onChange.bind(this)
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
         this._isMounted = false;
@@ -46,11 +54,28 @@ class Diseases extends React.Component{
         }
     }
 
+    changeValue(text) {
+        this.setState({dropDownValue: text});
+        this.getSubdiseases(text);
+    }
+
+    async getSubdiseases(disease_name){
+        await api.get('/subdiseases', {
+            params: {
+                disease_name: disease_name
+            }
+        })
+        .then((response) => {
+            this.setState({subdiseases:response.data});
+            console.log(this.state.subdiseases);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
     async getDiseases(user_id){
         await api.get('/diseases', {
-            // params: {
-            //     user_id: user_id
-            // }
         })
         .then((response) => {
             this.setState({diseases:response.data});
@@ -61,23 +86,15 @@ class Diseases extends React.Component{
         })
     }
 
-    removeDisease(disease_id){
-        api.delete('/diseases', {
-            params: {
-                disease_id: disease_id
-            }
-        })
-        .then((response) => {
-            this.getDiseases(this.state.user_id)
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+    redirectToDisease = (time, date, subdisease_id) => {
+        console.log(time, date, subdisease_id);
+        this.setState({redirect : true, time: time, date: date, subdisease_id: subdisease_id})
     }
 
-    redirectToDisease = (disease_id) => {
-        console.log(disease_id);
-        this.setState({redirect : true, disease_id: disease_id})
+    onChange(e){
+        this.setState({[e.target.name]: e.target.value})
+        console.log(this.state.time);
+        console.log(this.state.date);
     }
 
     close() {
@@ -93,35 +110,41 @@ class Diseases extends React.Component{
     }
 
     renderTableData(){
-        return this.state.diseases.map((disease, index) => {
+        return this.state.subdiseases.map((subdisease, index) => {
             return (
-                <tr key={disease.disease_id}>
-                    <td>{disease.disease_id}</td>
-                    <td>{disease.disease_name}</td>
-                    <td>{new Date(disease.disease_created_at).toLocaleString()}</td>
-                    {/*<td><button className="delete-disease" onClick={() => {this.removeDisease(disease.disease_id)}}>Delete</button></td>*/}
-                    <td><button className="show-disease" onClick={() => this.redirectToDisease(disease.disease_id)}>Show</button></td>
+                <tr key={subdisease.subdisease_id}>
+                    {/*<td>{subdisease.subdisease_id}</td>*/}
+                    <td>{subdisease.subdisease_name}</td>
+                    {/*<td>{new Date(subdisease.subdisease_created_at).toLocaleString()}</td>*/}
+                    <div className="option">
+                        <input type="text" placeholder="Đợt" name="time" value={this.state.time} onChange={this.onChange}/>
+                        <input type="text" placeholder="Ngày" name="date" value={this.state.date} onChange={this.onChange}/>
+                    </div>
+                    <td><button className="show-disease" onClick={() => this.redirectToDisease(this.state.time, this.state.date, subdisease.subdisease_id)}>Xem</button></td>
                 </tr>
             )
         })
     }
 
     render(){
-        const {redirect, disease_id} = this.state;
+        const {redirect, time, date, subdisease_id, diseases} = this.state;
         let {modalShow} = this.state
         return (
             <div style={{width: '-webkit-fill-available'}}>
                 <div className="top-content">
-                    <input className="disease-search" type="text" placeholder="Find by disease ID or disease name" />
-                    <button className="new-disease" onClick = {this.open}>New Disease</button>
+                    <p className="mytitle">Lựa chọn bệnh</p>
+                    <DropdownButton id="dropdown-item-button" title={this.state.dropDownValue}> 
+                        { diseases.map(this.state.renderDiseases) }
+                    </DropdownButton>
+                    {/*<button className="new-disease" onClick = {this.open}>New Disease</button>*/}
                 </div>
                 <div className="bot-content">
                     <table className="disease-table">
                         <thead>
                             <tr>
-                                <th className="disease-id">Disease ID</th>
-                                <th className="disease-name">Disease Name</th>
-                                <th className="disease-time">Created At</th>
+                                {/*<th className="disease-id">Sub-Disease ID</th>*/}
+                                <th className="disease-name">Triệu chứng kèm theo (Chọn đợt và ngày châm để xem chi tiết)</th>
+                                {/*<th className="disease-time">Created At</th>*/}
                             </tr>
                         </thead>
                         <tbody>
@@ -130,7 +153,7 @@ class Diseases extends React.Component{
                     </table>
                 </div>
                 <NewDisease userid={this.state.user_id} show={modalShow} onHide={this.close}/>
-                {redirect && (<Redirect to={{ pathname: '/disease/' + disease_id, state: {disease_id}}}/>)}
+                {redirect && (<Redirect to={{ pathname: '/subdiseases/' + subdisease_id, state: {time, date, subdisease_id}}}/>)}
             </div>
         )
     }

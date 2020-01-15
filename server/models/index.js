@@ -29,11 +29,9 @@ models.forEach(function(model){
 });
 
 (function(m){
-  m.disease.hasMany(m.image, {foreignKey: {name: 'disease_id', allowNull: false}, onDelete: 'CASCADE'});
-  m.image.belongsTo(m.disease, {foreignKey: {name: 'disease_id', allowNull: false}, onDelete: 'CASCADE'});
-
   m.disease.hasMany(m.subdisease, {foreignKey: {name: 'disease_id', allowNull: false}, onDelete: 'CASCADE'});
   m.subdisease.belongsTo(m.disease, {foreignKey: {name: 'disease_id', allowNull: false}, onDelete: 'CASCADE'});
-
+  m.subdisease.hasMany(m.image, {foreignKey: {name: 'subdisease_id', allowNull: false}, onDelete: 'CASCADE'});
+  m.image.belongsTo(m.subdisease, {foreignKey: {name: 'subdisease_id', allowNull: false}, onDelete: 'CASCADE'});
 })(module.exports);
 module.exports.sequelize = sequelize;

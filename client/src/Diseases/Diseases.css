@@ -1,6 +1,6 @@
 .top-content {
   width: -webkit-fill-available;
-  padding: 39px 0px 25px 113px;
+  padding: 39px 0px 0px 113px;
 }
 
 .disease-search {
@@ -55,9 +55,9 @@
 }
 
 .mytitle {
-  font-family: auto;
+  /*font-family: auto;*/
   font-size: 20px;
-  font-style: oblique;
+  /*font-style: oblique;*/
   font-weight: bold;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .option {
-  padding: 20px 0px 20px 13px;
+  padding: 10px 0px 20px 13px;
 }
 
 .option input {

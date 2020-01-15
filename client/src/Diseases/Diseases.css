@@ -1,6 +1,6 @@
 .top-content {
   width: -webkit-fill-available;
-  padding: 39px 0px 39px 100px;
+  padding: 39px 0px 25px 113px;
 }
 
 .disease-search {
@@ -68,7 +68,6 @@
 
 .option {
   padding: 20px 0px 20px 13px;
-  float: right;
 }
 
 .option input {
@@ -99,7 +98,6 @@
 .disease-table thead tr th {
   width: 69%;
   padding: 0px 0px 0px 13px;
-  border-left: 1px solid rgba(187, 187, 187, 1);
 }
 
 .disease-table tbody {

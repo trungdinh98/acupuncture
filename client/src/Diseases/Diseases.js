@@ -118,11 +118,7 @@ class Diseases extends React.Component{
             return (
                 <tr key={subdisease.subdisease_id}>
                     <td>{subdisease.subdisease_name}</td>
-                    <div className="option">
-                        <input type="text" placeholder="Đợt" name="time" value={this.state.time} onChange={this.onChange}/>
-                        <input type="text" placeholder="Ngày" name="date" value={this.state.date} onChange={this.onChange}/>
-                    </div>
-                    <td><button className="show-disease" onClick={() => this.redirectToDisease(this.state.time, this.state.date, subdisease.subdisease_id)}>Xem</button></td>
+                    <td><button className="show-disease" onClick={() => this.redirectToDisease(this.state.time, this.state.date, subdisease.subdisease_id)}>Chi tiết</button></td>
                 </tr>
             )
         })
@@ -146,6 +142,10 @@ class Diseases extends React.Component{
                             <tr>
                                 <th className="disease-name">Triệu chứng kèm theo (Chọn đợt và ngày châm để xem chi tiết)</th>
                             </tr>
+                            <div className="option">
+                                <input type="text" placeholder="Đợt" name="time" value={this.state.time} onChange={this.onChange}/>
+                                <input type="text" placeholder="Ngày" name="date" value={this.state.date} onChange={this.onChange}/>
+                            </div>
                         </thead>
                         <tbody>
                             {this.renderTableData()}

@@ -18,7 +18,7 @@ class Acupuncture extends React.Component {
     }
 
     componentDidMount () {
-        console.log(this.props);
+        // console.log(this.props);
         this.getSubDisease(this.props.location.state.subdisease_id);
         this.getImages(this.props.location.state.time, this.props.location.state.date, this.props.location.state.subdisease_id);
     }
@@ -73,10 +73,6 @@ class Acupuncture extends React.Component {
                 <div style={{width: 'inherit'}} className="jumbotron mt-5">
                     <table className="table col-md-6 mx-auto">
                         <tbody>
-                            <tr>
-                                <td>ID:</td>
-                                <td>{this.state.subdisease.subdisease_id}</td>
-                            </tr>
                             <tr>
                                 <td>Name:</td>
                                 <td>{this.state.subdisease.subdisease_name}</td>

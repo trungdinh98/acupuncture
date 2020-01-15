@@ -117,9 +117,7 @@ class Diseases extends React.Component{
         return this.state.subdiseases.map((subdisease, index) => {
             return (
                 <tr key={subdisease.subdisease_id}>
-                    {/*<td>{subdisease.subdisease_id}</td>*/}
                     <td>{subdisease.subdisease_name}</td>
-                    {/*<td>{new Date(subdisease.subdisease_created_at).toLocaleString()}</td>*/}
                     <div className="option">
                         <input type="text" placeholder="Đợt" name="time" value={this.state.time} onChange={this.onChange}/>
                         <input type="text" placeholder="Ngày" name="date" value={this.state.date} onChange={this.onChange}/>
@@ -146,9 +144,7 @@ class Diseases extends React.Component{
                     <table className="disease-table">
                         <thead>
                             <tr>
-                                {/*<th className="disease-id">Sub-Disease ID</th>*/}
                                 <th className="disease-name">Triệu chứng kèm theo (Chọn đợt và ngày châm để xem chi tiết)</th>
-                                {/*<th className="disease-time">Created At</th>*/}
                             </tr>
                         </thead>
                         <tbody>

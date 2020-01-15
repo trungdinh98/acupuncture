@@ -88,7 +88,11 @@ class Diseases extends React.Component{
 
     redirectToDisease = (time, date, subdisease_id) => {
         console.log(time, date, subdisease_id);
-        this.setState({redirect : true, time: time, date: date, subdisease_id: subdisease_id})
+        if (time === "" || date === "") {
+            alert("Bạn cần điền đợt và ngày trước khi xem !");
+        } else {
+            this.setState({redirect : true, time: time, date: date, subdisease_id: subdisease_id})
+        }
     }
 
     onChange(e){
